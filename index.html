@@ -192,6 +192,70 @@
   .quote-box blockquote span { color: var(--gold); }
   .quote-box cite { display: block; margin-top: 32px; font-style: normal; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(234,234,234,.6); }
 
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 96px; align-items: start; }
+  .portrait { position: relative; margin: 0 24px 24px 0; }
+  .portrait::before {
+    content: ""; position: absolute; inset: 24px -24px -24px 24px;
+    border: 1px solid rgba(198, 169, 107, 0.5);
+    pointer-events: none;
+  }
+  .portrait-img { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e9e9e9; }
+  .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: saturate(.9) contrast(1.02); }
+  .portrait-img::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(15, 42, 68, .55), transparent 40%);
+  }
+  .portrait-badge {
+    position: absolute; left: -1px; bottom: 32px; z-index: 1;
+    background: var(--bg); border-left: 2px solid var(--gold);
+    padding: 18px 28px;
+  }
+  .portrait-badge strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 36px; line-height: 1; color: var(--gold); }
+  .portrait-badge span { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
+  .about-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 56px; }
+  .about-facts span {
+    font-size: 13px; padding: 8px 14px;
+    border: 1px solid var(--line-strong); color: rgba(234,234,234,.82);
+  }
+  .about-text p { color: var(--muted); margin-bottom: 20px; }
+  .about-text p.lead { color: var(--text); font-size: 20px; font-weight: 400; line-height: 1.6; margin-bottom: 28px; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .signature { display: flex; align-items: center; gap: 20px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .signature-name { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; }
+  .signature-role { font-size: 13px; color: var(--muted); letter-spacing: 0.06em; }
+  .signature::before { content: ""; width: 48px; height: 1px; background: var(--gold); }
+
+  /* ---------- Role ---------- */
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 72px; }
+  .role-col { background: var(--bg); padding: 48px 44px; }
+  .role-col h3 { font-size: 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+  .role-col h3 .tag { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .role-col h3 .tag svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .role-col.do h3 .tag { border: 1px solid var(--gold); color: var(--gold); }
+  .role-col.dont h3 .tag { border: 1px solid var(--muted); color: var(--muted); }
+  .role-col p { color: var(--muted); font-size: 16px; margin-bottom: 16px; }
+  .role-col p:last-child { margin-bottom: 0; }
+  .role-col ul { list-style: none; margin-bottom: 20px; }
+  .role-col li { position: relative; padding: 10px 0 10px 22px; border-bottom: 1px solid var(--line); font-size: 15px; color: rgba(234,234,234,.88); }
+  .role-col li:last-child { border-bottom: 0; }
+  .role-col li::before { content: ""; position: absolute; left: 0; top: 22px; width: 10px; height: 1px; background: var(--gold); }
+  .role-col.dont li { color: var(--muted); }
+  .role-col.dont li::before { background: var(--muted); }
+
+  .roles-head { margin-top: 112px; display: grid; grid-template-columns: 5fr 7fr; gap: 96px; align-items: start; }
+  .roles-head h3 { font-size: clamp(24px, 2.4vw, 30px); }
+  .roles-head p { color: var(--muted); margin-bottom: 16px; }
+  .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+  .role-card { border: 1px solid var(--line-strong); padding: 32px 28px; }
+  .role-card .who { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .role-card h4 { font-size: 18px; margin-bottom: 10px; }
+  .role-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .role-card.me { background: var(--navy); border-color: rgba(198,169,107,.45); position: relative; }
+  .role-card.me::before { content: ""; position: absolute; top: -1px; left: -1px; right: -1px; height: 2px; background: var(--gold); }
+  .role-card.me .who { color: var(--gold); }
+  .role-card.me p { color: rgba(234,234,234,.75); }
+
   /* ---------- Scope ---------- */
   .scope-head { display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 72px; }
   .scope-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
@@ -322,7 +386,9 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 1080px) {
-    .hero .container, .solution-grid, .forwhom-grid { grid-template-columns: 1fr; gap: 56px; }
+    .hero .container, .solution-grid, .forwhom-grid, .about-grid, .roles-head { grid-template-columns: 1fr; gap: 56px; }
+    .portrait { max-width: 440px; }
+    .roles { grid-template-columns: repeat(2, 1fr); }
     .hero-box { max-width: 520px; }
     .scope-grid { grid-template-columns: repeat(2, 1fr); }
     .card, .card:nth-child(4) { grid-column: auto; }
@@ -335,7 +401,7 @@
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid > :first-child { grid-column: 1 / -1; }
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     .burger { display: block; }
     .nav-links {
       position: fixed; top: var(--nav-h); left: 0; right: 0;
@@ -350,7 +416,7 @@
     .nav-links li { width: 100%; }
     .nav-links a:not(.btn) { display: block; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
     .nav-links .btn { margin-top: 24px; width: 100%; justify-content: center; }
-    .problem-grid, .timeline { grid-template-columns: 1fr; }
+    .problem-grid, .timeline, .role-grid { grid-template-columns: 1fr; }
     .timeline { gap: 48px; padding-left: 40px; }
     .timeline::before { top: 0; bottom: 0; left: 7px; right: auto; width: 1px; height: auto; transform: scaleY(var(--progress, 0)); transform-origin: top;
       background: linear-gradient(to bottom, var(--gold), rgba(198,169,107,.25)); }
@@ -369,7 +435,10 @@
     .problem-item { padding: 40px 28px; }
     .quote-box { padding: 52px 28px 44px; }
     .quote-box::before { left: 28px; }
-    .scope-grid, .why-grid { grid-template-columns: 1fr; }
+    .scope-grid, .why-grid, .roles { grid-template-columns: 1fr; }
+    .role-col { padding: 40px 24px; }
+    .portrait { margin: 0 16px 16px 0; }
+    .portrait::before { inset: 16px -16px -16px 16px; }
     .card:nth-child(5) { grid-column: auto; }
     .card { padding: 36px 24px 28px; }
     .stats { grid-template-columns: 1fr; }
@@ -395,6 +464,7 @@
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#o-usludze" class="link-underline">O usłudze</a></li>
+      <li><a href="#o-mnie" class="link-underline">O mnie</a></li>
       <li><a href="#zakres" class="link-underline">Zakres</a></li>
       <li><a href="#proces" class="link-underline">Proces</a></li>
       <li><a href="#kontakt" class="link-underline">Kontakt</a></li>
@@ -461,13 +531,112 @@
     <div class="solution-text">
       <div class="eyebrow reveal">Rozwiązanie</div>
       <h2 class="section-title reveal d1">Jedna osoba odpowiedzialna za&nbsp;całość</h2>
-      <p class="strong reveal d2">Pełnię rolę inwestora zastępczego — zarządzam procesem, kontroluję wykonawców i dbam o Twoje interesy.</p>
+      <p class="strong reveal d2">Pełnię rolę inwestora zastępczego — zarządzam procesem, koordynuję wykonawców i dbam o Twoje interesy.</p>
       <p class="reveal d2">Reprezentuję Cię w całym procesie inwestycyjnym, pilnuję harmonogramu i budżetu oraz koordynuję wszystkich uczestników budowy.</p>
       <p class="reveal d3">Moim zadaniem jest to, żebyś odebrał gotowy, wybudowany i wykończony dom — bez niespodzianek, bez opóźnień i bez przepłacania.</p>
     </div>
     <div class="quote-box reveal d2">
       <blockquote>Ty podejmujesz decyzje.<br><span>Ja zarządzam całym procesem.</span></blockquote>
       <cite>Tomasz Surdej</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="bg-alt" id="o-mnie">
+  <div class="container about-grid">
+    <div class="reveal">
+      <figure class="portrait">
+        <div class="portrait-img">
+          <img src="images/tomasz-surdej.jpg" alt="Tomasz Surdej — inżynier budownictwa, inwestor zastępczy" width="933" height="1400" loading="lazy">
+        </div>
+        <figcaption class="portrait-badge"><strong>14+</strong><span>lat w inwestycjach budowlanych</span></figcaption>
+      </figure>
+      <div class="about-facts">
+        <span>Inżynier budownictwa</span>
+        <span>Manager projektów inwestycyjnych</span>
+        <span>Mieszkaniówka · Handel i usługi · Infrastruktura</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="eyebrow reveal">O mnie</div>
+      <h2 class="section-title reveal d1">Inżynier, który patrzy na inwestycję całościowo</h2>
+      <p class="lead reveal d1">Jestem inżynierem budownictwa i managerem projektów inwestycyjnych z ponad 14-letnim doświadczeniem w przygotowaniu i realizacji inwestycji budowlanych.</p>
+      <p class="reveal d2">Odpowiadałem za projekty o różnym charakterze — od budownictwa mieszkaniowego, przez obiekty handlowe i usługowe, po infrastrukturę techniczną. Dzięki temu uwzględniam nie tylko rozwiązania techniczne, ale również <strong>budżet, harmonogram, ryzyka</strong> i sprawną współpracę wszystkich zaangażowanych stron.</p>
+      <p class="reveal d2">Koordynuję proces inwestycyjny od przygotowania założeń i dokumentacji, przez wybór projektantów i wykonawców, po kontrolę kosztów, monitorowanie postępu prac, odbiory i końcowe rozliczenie.</p>
+      <p class="reveal d3">Jako inwestor zastępczy chcę zapewnić Ci to, czego najbardziej potrzebujesz podczas budowy własnego domu: <strong>kontrolę nad procesem, przejrzyste informacje i wsparcie w podejmowaniu świadomych decyzji.</strong> Dbam o to, aby etapy były odpowiednio przygotowane, decyzje podejmowane na czas, a budżet i harmonogram regularnie weryfikowane.</p>
+      <p class="reveal d3">Współpracę opieram na rzetelności, dobrej organizacji i bezpośredniej komunikacji. Przekładam złożony proces budowlany na uporządkowane działania — wiesz, co dzieje się na Twojej budowie, jakie decyzje przed Tobą stoją i jakie mogą być ich konsekwencje.</p>
+      <div class="signature reveal d4">
+        <div>
+          <div class="signature-name">Tomasz Surdej</div>
+          <div class="signature-role">Inwestor zastępczy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ROLE ========== -->
+<section id="rola">
+  <div class="container">
+    <div class="eyebrow reveal">Moja rola</div>
+    <h2 class="section-title reveal d1">Jasny podział ról — po Twojej stronie stołu</h2>
+    <p class="section-lead reveal d2">Działam na podstawie umowy z inwestorem i w uzgodnionym zakresie reprezentuję jego interesy organizacyjne i biznesowe.</p>
+
+    <div class="role-grid">
+      <div class="role-col do reveal">
+        <h3><span class="tag"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>Co robię</h3>
+        <ul>
+          <li>Pomagam przygotować inwestycję i porównać oferty</li>
+          <li>Koordynuję projektantów i wykonawców</li>
+          <li>Monitoruję budżet i harmonogram, prowadzę raportowanie</li>
+          <li>Pilnuję terminowego podejmowania decyzji</li>
+          <li>Weryfikuję postęp realizacji i sygnalizuję ryzyka</li>
+          <li>W razie potrzeby koordynuję działania specjalistów</li>
+        </ul>
+      </div>
+      <div class="role-col dont reveal d1">
+        <h3><span class="tag"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></span>Czego nie robię</h3>
+        <ul>
+          <li>Kierownik budowy</li>
+          <li>Inspektor nadzoru inwestorskiego</li>
+          <li>Generalny wykonawca</li>
+        </ul>
+        <p>Te funkcje mają odrębne zadania i odpowiedzialność. Współpracuję z osobami i firmami, które je pełnią, koordynuję ich działania w zakresie uzgodnionym z inwestorem i monitoruję realizację zobowiązań umownych.</p>
+        <p>Nie zastępuję ich ustawowych obowiązków ani uprawnień.</p>
+      </div>
+    </div>
+
+    <div class="roles-head">
+      <h3 class="reveal">Dlaczego rozdzielenie ról jest korzystne dla inwestora?</h3>
+      <div>
+        <p class="reveal d1">Inwestor zastępczy ma działać w interesie klienta. Gdyby ta sama firma wykonywała roboty, a potem miała niezależnie oceniać własne koszty, jakość lub terminowość — powstawałoby ryzyko konfliktu interesów.</p>
+        <p class="reveal d2">Rozdzielenie zarządzania po stronie inwestora od wykonawstwa i formalnej kontroli technicznej ułatwia niezależną ocenę ofert, postępu robót, zgłaszanych zmian, kosztów dodatkowych i wad.</p>
+      </div>
+    </div>
+
+    <div class="roles">
+      <div class="role-card reveal">
+        <div class="who">Wykonawca</div>
+        <h4>Wykonanie robót</h4>
+        <p>Odpowiada za realizację prac zgodnie z umową i projektem.</p>
+      </div>
+      <div class="role-card reveal d1">
+        <div class="who">Kierownik budowy</div>
+        <h4>Kierowanie budową</h4>
+        <p>W zakresie wynikającym z przepisów prawa budowlanego.</p>
+      </div>
+      <div class="role-card reveal d2">
+        <div class="who">Inspektor nadzoru</div>
+        <h4>Kontrola techniczna</h4>
+        <p>W imieniu inwestora — jeśli zostanie ustanowiony lub jest wymagany.</p>
+      </div>
+      <div class="role-card me reveal d3">
+        <div class="who">Inwestor zastępczy · Ja</div>
+        <h4>Koordynacja po stronie inwestora</h4>
+        <p>Pomagam ocenić informacje i podejmować decyzje.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -534,11 +703,11 @@
           <span class="card-num">03</span>
         </div>
         <h3>Wykonawca i budowa</h3>
-        <p class="card-lead">Znajdę rzetelnego wykonawcę i nadzoruję budowę aż do stanu deweloperskiego.</p>
+        <p class="card-lead">Pomogę wybrać rzetelnego wykonawcę i koordynuję realizację aż do stanu deweloperskiego.</p>
         <ul>
           <li>Zapytania ofertowe i analiza ofert</li>
           <li>Negocjacja i przygotowanie umowy z wykonawcą</li>
-          <li>Nadzór inwestorski — jakość, projekt, harmonogram</li>
+          <li>Monitorowanie postępu — jakość, projekt, harmonogram</li>
           <li>Kontrola płatności wg zaawansowania robót</li>
         </ul>
         <details>
@@ -561,7 +730,7 @@
         <ul>
           <li>Dokumentacja powykonawcza</li>
           <li>Zgłoszenie zakończenia budowy do nadzoru budowlanego</li>
-          <li>Odbiory instalacji: elektryczna, gazowa, wentylacja, kominowa</li>
+          <li>Koordynacja odbiorów instalacji: elektryczna, gazowa, wentylacja, kominowa</li>
           <li>Protokół usterek i egzekwowanie gwarancji</li>
         </ul>
         <details>
@@ -618,7 +787,7 @@
       <div class="step reveal d2">
         <div class="step-num">03</div>
         <h3>Realizacja</h3>
-        <p>Zarządzam projektantami, wykonawcami i urzędami. Ty dostajesz raporty i decydujesz.</p>
+        <p>Koordynuję projektantów, wykonawców i formalności. Ty dostajesz raporty i decydujesz.</p>
       </div>
       <div class="step reveal d3">
         <div class="step-num">04</div>
@@ -659,9 +828,9 @@
     </div>
 
     <div class="stats">
-      <div class="stat reveal"><div class="stat-value" data-count="100" data-suffix="+">100+</div><div class="stat-label">decyzji przejętych od klienta</div></div>
-      <div class="stat reveal d1"><div class="stat-value">12–18</div><div class="stat-label">miesięcy kompleksowego zarządzania</div></div>
-      <div class="stat reveal d2"><div class="stat-value" data-count="5">5</div><div class="stat-label">etapów — od działki po wykończenie</div></div>
+      <div class="stat reveal"><div class="stat-value" data-count="14" data-suffix="+">14+</div><div class="stat-label">lat doświadczenia w inwestycjach budowlanych</div></div>
+      <div class="stat reveal d1"><div class="stat-value" data-count="100" data-suffix="+">100+</div><div class="stat-label">decyzji przejętych od klienta</div></div>
+      <div class="stat reveal d2"><div class="stat-value">12–18</div><div class="stat-label">miesięcy kompleksowego zarządzania</div></div>
       <div class="stat reveal d3"><div class="stat-value" data-count="1">1</div><div class="stat-label">punkt kontaktu przez całą inwestycję</div></div>
     </div>
   </div>
@@ -690,9 +859,9 @@
     <div class="eyebrow reveal">Kontakt</div>
     <h2 class="reveal d1">Porozmawiajmy o Twojej inwestycji</h2>
     <p class="reveal d2">Pierwsza konsultacja pozwoli określić zakres i możliwości współpracy.</p>
-    <a href="mailto:kontakt@tomaszsurdej.pl?subject=Konsultacja%20%E2%80%94%20budowa%20domu" class="btn btn-gold btn-lg reveal d3">Umów konsultację
+    <a href="tel:+48791459767" class="btn btn-gold btn-lg reveal d3">Zadzwoń: 791 459 767
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
-    <div class="cta-alt reveal d4">lub zadzwoń: <a href="tel:+48000000000" class="link-underline">+48 000 000 000</a></div>
+    <div class="cta-alt reveal d4">lub napisz: <a href="mailto:surdej.tomasz@gmail.com?subject=Konsultacja%20%E2%80%94%20budowa%20domu" class="link-underline">surdej.tomasz@gmail.com</a></div>
   </div>
 </section>
 
@@ -712,11 +881,11 @@
       </div>
       <div class="footer-col">
         <h4>Telefon</h4>
-        <a href="tel:+48000000000" class="link-underline">+48 000 000 000</a>
+        <a href="tel:+48791459767" class="link-underline">+48 791 459 767</a>
       </div>
       <div class="footer-col">
         <h4>E-mail</h4>
-        <a href="mailto:kontakt@tomaszsurdej.pl" class="link-underline">kontakt@tomaszsurdej.pl</a>
+        <a href="mailto:surdej.tomasz@gmail.com" class="link-underline">surdej.tomasz@gmail.com</a>
       </div>
       <div class="footer-col">
         <h4>Lokalizacja</h4>
